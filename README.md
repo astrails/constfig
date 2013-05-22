@@ -4,6 +4,9 @@ Simple configuration for Ruby.
 
 Allows you to define configuration CONSTANTS that take values from ENV.
 
+[![Build Status](https://travis-ci.org/astrails/constfig.png)](https://travis-ci.org/astrails/constfig)
+[![Code Climate](https://codeclimate.com/github/astrails/constfig.png)](https://codeclimate.com/github/astrails/constfig)
+
 ## Installation
 
 Add this line to your application's Gemfile:
