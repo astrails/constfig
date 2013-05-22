@@ -58,7 +58,20 @@ For boolean variables you can supply either `TrueClass`, or  `FalseClass`.
 
 ### Existing constants
 
-This gem will not re-define existing constants.
+This gem will not re-define existing constants, which can be used to define
+DEFAULTS for development environment.
+
+For example in Rails you con do this:
+
+    unless ['production', 'staging'].include?(Rails.env)
+      DEFAULT_DOMAIN = 'myapp.dev'
+    end
+
+    define_config :DEFAULT_DOMAIN
+
+In development and test environments it willuse 'myapp.dev' ad
+`PRIMARY_DOMAIN`, but in production and staging environment it will fail unless
+`PRIMARY_DOMAIN` is provided by environment
 
 ### Managing environment
 
