@@ -69,7 +69,7 @@ defaults for non-production environments.
 There is one caveat with Rails on Heroku. By default Heroku doesn't provide
 environment variables to your application during the `rake assets:precompile`
 stage of slug compilation. If you don't take care of it your application will
-fail to compile its assets and might fail to work in produciton. To take care
+fail to compile its assets and might fail to work in production. To take care
 of it you can either use Heroku Labs
 [user-env-compile](https://devcenter.heroku.com/articles/labs-user-env-compile)
 option, or (and this is what I'd recommend) you can use development defaults
@@ -83,7 +83,7 @@ For example in Rails you con do this:
 
     define_config :DEFAULT_DOMAIN
 
-In development and test environments it willuse 'myapp.dev' ad
+In development and test environments it will use 'myapp.dev' ad
 `PRIMARY_DOMAIN`, but in production and staging environment it will fail unless
 `PRIMARY_DOMAIN` is provided by environment.
 
