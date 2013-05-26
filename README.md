@@ -62,11 +62,22 @@ For boolean variables you can supply either `TrueClass`, or  `FalseClass`.
 ### Existing constants
 
 This gem will not re-define existing constants, which can be used to define
-DEFAULTS for development environment.
+defaults for non-production environments.
+
+### Rails on Heroku
+
+There is one caveat with Rails on Heroku. By default Heroku doesn't provide
+environment variables to your application during the `rake assets:precompile`
+stage of slug compilation. If you don't take care of it your application will
+fail to compile its assets and might fail to work in produciton. To take care
+of it you can either use Heroku Labs
+[user-env-compile](https://devcenter.heroku.com/articles/labs-user-env-compile)
+option, or (and this is what I'd recommend) you can use development defaults
+during assets:precompile.
 
 For example in Rails you con do this:
 
-    unless ['production', 'staging'].include?(Rails.env)
+    if Rails.env.development? || Rails.env.test? || ARGV.join =~ /assets:precompile/
       DEFAULT_DOMAIN = 'myapp.dev'
     end
 
@@ -74,7 +85,10 @@ For example in Rails you con do this:
 
 In development and test environments it willuse 'myapp.dev' ad
 `PRIMARY_DOMAIN`, but in production and staging environment it will fail unless
-`PRIMARY_DOMAIN` is provided by environment
+`PRIMARY_DOMAIN` is provided by environment.
+
+> NOTE: make sure those configuration variables are not actually used for asset
+> compilation. If they are, I'd go with `user-env-compile`.
 
 ### Managing environment
 
