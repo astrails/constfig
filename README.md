@@ -2,10 +2,47 @@
 
 Simple configuration for Ruby.
 
-Allows you to define configuration CONSTANTS that take values from ENV.
+Allows you to define configuration CONSTANTS that take values from environment
+variables. With support for default values, required variables and type
+conversions.
 
 [![Build Status](https://travis-ci.org/astrails/constfig.png)](https://travis-ci.org/astrails/constfig)
 [![Code Climate](https://codeclimate.com/github/astrails/constfig.png)](https://codeclimate.com/github/astrails/constfig)
+
+## Introduction
+
+The are multiple ways of configuring your Rails application for different
+environments (e.g. staging, production, etc.). One of the popular ones is
+through environment variables. For example Heroku uses this type of
+configuration extensively.
+
+One of the benefits of it is that configuration values are never stored in the
+source control system, which improves security (for sensitive configuration
+parameters) and also makes it easier to try different configuration setups w/o
+changing the sources or re-deploying the application.
+
+On the other hand writing `(ENV['PRIMARY_DOMAIN'] || "myapp.com")` every time
+you need your domain string becomes cumbersome pretty fast, not to mention
+duplication and having the default repeated all over the place.
+
+A competent programmer will of course only do this once, and re-use the value
+everywhere. Something like this:
+
+    PRIMARY_DOMAIN = ENV['PRIMARY_DOMAIN'].presence || 'myapp.com'
+    S3_BUCKET = ENV['S3_BUCKET'] || raise 'missing S3_BUCKET'
+    ORDER_EXPIRATION_DAYS = (ENV['ORDER_EXPIRATION_DAYS'].presence || 1).to_i
+
+But it quickly becomes complicated, and again, quite a bit of similarly looking
+code that begs to be refactored out.
+
+This gem is something I extracted from a couple of my latest projects. It
+allows you to do just that, have a configuration parameters stored in constants
+with values coming from environment variables and ability to provide defaults
+or have required parameters (i.e. fail if missing).
+
+I just released version 0.0.1 of [constfig](https://rubygems.org/gems/constfig)
+to rubygems. Sources are of course on
+[github](https://github.com/astrails/constfig).
 
 ## Installation
 

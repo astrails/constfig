@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = Constfig::VERSION
   gem.authors       = ["Vitaly Kushner"]
   gem.email         = ["vitaly@astrails.com"]
-  gem.description   = %q{Simple Constnt Configuration for Ruby. Creates CONSTANTS with values from ENV}
+  gem.description   = %q{Simple Constnt Configuration for Ruby.  Allows you to define configuration CONSTANTS that take values from environment variables. With support for default values, required variables and type conversions.}
   gem.summary       = %q{Simple Constnt configuration for Ruby.}
   gem.homepage      = "http://astrails.com/blog/constfig"
 
