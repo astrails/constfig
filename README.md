@@ -77,13 +77,13 @@ Or you can call it without the default:
 In which case it will raise exception `Constfig::Undefined` if
 `ENV['DEFAULT_DOMAIN']` is not available.
 
-### Variable type
+### Type conversions
 
-One last thing. Non-string variables are supported. If you provide a non-string
-default (boolean, integer, float or symbol), the value that is coming from
-`ENV` will be converted to the same type (using `to_i`, `to_f`, and
-`to_symbol`).  For the true/false types `"true"`, `"TRUE"`, and `"1"` will be
-treated as `true`, anything else will be treated as `false`.
+Non-string variables are supported. If you provide a non-string default
+(boolean, integer, float or symbol), the value that is coming from `ENV` will
+be converted to the same type (using `to_i`, `to_f`, and `to_symbol`).  For the
+true/false types `"true"`, `"TRUE"`, and `"1"` will be treated as `true`,
+anything else will be treated as `false`.
 
 In the case of required variables, you can supply a `Class` in place of the
 default, and it will be used for the type conversion. Like this:
