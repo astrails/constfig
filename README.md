@@ -40,10 +40,6 @@ allows you to do just that, have a configuration parameters stored in constants
 with values coming from environment variables and ability to provide defaults
 or have required parameters (i.e. fail if missing).
 
-I just released version 0.0.1 of [constfig](https://rubygems.org/gems/constfig)
-to rubygems. Sources are of course on
-[github](https://github.com/astrails/constfig).
-
 ## Installation
 
 Add this line to your application's Gemfile:
