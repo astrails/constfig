@@ -24,6 +24,8 @@ module Constfig
 
     def convert_to_type(value, type)
       case type
+      when 'Array'
+        eval(value)
       when 'Fixnum'
         value.to_i
       when 'Float'

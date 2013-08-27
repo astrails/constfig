@@ -92,6 +92,9 @@ default, and it will be used for the type conversion. Like this:
 
 For boolean variables you can supply either `TrueClass`, or  `FalseClass`.
 
+There is a special case for `Array`, e.i. when either default value is an array,
+or `Array` is passed as type. In this case the value is just passed to `eval`.
+
 ### Existing constants
 
 This gem will not re-define existing constants, which can be used to define

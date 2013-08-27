@@ -55,6 +55,7 @@ describe Constfig do
     verify_conversion '1',     true,  true
     verify_conversion 'true',  true,  true
     verify_conversion 'TRUE',  true,  true
+    verify_conversion '[1,2,3]',  [],  [1,2,3]
 
     verify_conversion '12.3', Fixnum,     12
     verify_conversion '12.3', Float,      12.3
@@ -70,6 +71,7 @@ describe Constfig do
     verify_conversion 'true', FalseClass, true
     verify_conversion 'TRUE', TrueClass,  true
     verify_conversion 'TRUE', FalseClass, true
+    verify_conversion '[1,2,"123"]',  Array,  [1,2,"123"]
   end
 
 end
